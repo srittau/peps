@@ -4,7 +4,7 @@ Author: Jelle Zijlstra <jelle.zijlstra@gmail.com>,
  Rebecca Chen <rechen@google.com>,
  Teddy Sudol <tsudol@google.com>,
  Sebastian Rittau <srittau@rittau.biz>
-Status:
+Status: Draft
 Type: Informational
 Content-Type: text/x-rst
 Created:
