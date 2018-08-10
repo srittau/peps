@@ -13,6 +13,36 @@ Post-History:
 Abstract
 ========
 
+Optional type hints were introduced to the Python language in PEP 484, based
+on the function annotation syntax from PEP 3107. PEP 526 extended
+this syntax to include variable annotations.
+
+PEP 484 also introduced *stub files* to add type annotations that are kept
+separate of the actual implementation. This serves multiple purposes:
+
+* Stub files are the only way to add type information to extension modules.
+* Type hints can provide type information for packages that do not wish to
+  use them inline or need to support older versions of Python and do not
+  wish to use type hints in comments.
+* Stub files can be distributed separately from the actual implementation.
+  This allows a different pace of development and is especially useful
+  when adding type hints to existing packages.
+* Stub files act as documentation, succinctly explaining the external
+  API of a package, without including the implementation or private
+  members.
+
+This PEP aims to give guidance to both authors of stub files and type
+checkers by listing constructs that compliant type checkers are expected
+to support and giving guidance on the contents and style of stub files.
+
+For the purposes of this PEP, a type checker is considered compliant if
+it accepts all constructs described in
+this PEP and does not interpret them in a manner that contradicts it.
+It does not need to support type checks on these feature to be considered
+compliant. Additionally, a type checker can support extra constructs not
+described in this PEP. It is recommended that a type checker documents
+all deviations.
+
 References
 ==========
 
