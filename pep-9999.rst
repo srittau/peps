@@ -42,10 +42,10 @@ must be prepared that some type checkers will not parse them as expected.
 A type checker is considered to be compliant if
 it accepts all compliant documents. This means that it
 will parse such a document without error and does not interpret any
-construct in a contradictory manner, but type checker are not
+construct in a contradictory manner, but a type checker is not
 required to type check all possible constructs. Additionally, a type checker
 can support extra constructs not described in this PEP. It is recommended
-that type checker document all deviations.
+to document all deviations.
 
 References
 ==========
