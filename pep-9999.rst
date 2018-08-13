@@ -15,9 +15,9 @@ Abstract
 
 Optional type hints were introduced to the Python language in PEP 484
 [#pep484]_, based on the function annotation syntax from PEP 3107
-[#pep3107]_. PEP 484 also introduced *type stubs*, files that provide type
-information for untyped Python packages and modules. Type stubs serve
-multiple purposes:
+[#pep3107]_. PEP 484 also introduced *type stubs*, also called *stub files*,
+that provide type information for untyped Python packages and modules. Type
+stubs serve multiple purposes:
 
 * They are the only way to add type information to extension modules.
 * They can provide type information for packages that do not wish to
@@ -30,17 +30,17 @@ multiple purposes:
   API of a package, without including the implementation or private
   members.
 
-This PEP aims to give guidance to both authors of stub files and developers
-of type checkers. It lists constructs that compliant type checkers are
-expected to support and gives guidance on the contents and style of stub
-files.
+This PEP aims to give guidance to both authors of type stubs and developers
+of type checkers. It describes the contents of compliant type stubs,
+suggests a style guide for them, and lists constructs that compliant type
+checkers are expected to support.
 
 A type stub is considered to be compliant if it only uses constructs decribed
 in this PEP. Type stub authors can elect to use additional constructs, but
 must be prepared that some type checkers will not parse them as expected.
 
 A type checker is considered to be compliant if
-it accepts all compliant documents. This means that it
+it accepts all compliant type stubs. This means that it
 will parse such a document without error and does not interpret any
 construct in a contradictory manner, but a type checker is not
 required to type check all possible constructs. Additionally, a type checker
