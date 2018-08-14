@@ -40,12 +40,12 @@ in this PEP. Type stub authors can elect to use additional constructs, but
 must be prepared that some type checkers will not parse them as expected.
 
 A type checker is considered to be compliant if
-it accepts all compliant type stubs. This means that it
-will parse such a document without error and does not interpret any
-construct in a contradictory manner, but a type checker is not
-required to type check all possible constructs. Additionally, a type checker
-can support extra constructs not described in this PEP. It is recommended
-to document all deviations.
+it accepts all compliant type stubs. This means it
+will parse a compliant type stub without error and does not interpret any
+construct in a contradictory manner. A compliant type checker is not
+required to interpret all standard constructs, and additionally a type checker
+can support extra constructs not described in this PEP. All deviations from
+this PEP should be documented.
 
 References
 ==========
