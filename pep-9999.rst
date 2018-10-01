@@ -47,12 +47,52 @@ required to interpret all standard constructs, and additionally a type checker
 can support extra constructs not described in this PEP. All deviations from
 this PEP should be documented.
 
+Directory Structure and Syntax
+==============================
+
+Type stubs are syntactically valid Python files with a ``.pyi`` suffix.
+Type checkers are expected to support the syntax of the latest Python
+version. Type stubs should be parseable with the latest released Python
+version, but also support the previous version up until six months after
+the release of the current version. Older Python versions do not need to be
+supported, even if the implementation supports older versions or the
+type checker is run with an older version.
+
+Type stub files can either live next to their respective implementation
+files or in a separate directory::
+
+    pkg
+        __init__.py
+        __init__.pyi
+        mod.py
+        mod.pyi
+
+    pkg
+        __init__.py
+        mod.py
+    stubs
+        pkg
+            __init__.pyi
+            mod.pyi
+
+Distribution
+============
+
+Type stubs can be distributed separately from the implementation, 
+see PEP 561 [#pep561]_ for more information. The typeshed_ project
+includes stubs for Python's standard library and several third-party
+packages. These are usually distributed with type checkers and do not
+require separate installation.
+
 References
 ==========
 
 .. [#pep484] PEP 484 -- Type Hints, van Rossum et al. (https://www.python.org/dev/peps/pep-0484)
 .. [#pep526] PEP 526 -- Syntax for Variable Annotations, Gonzalez et al. (https://www.python.org/dev/peps/pep-0526)
+.. [#pep561] PEP 561 -- Distributing and Packaging Type Information, Smit (https://www.python.org/dev/peps/pep-0561)
 .. [#pep3107] PEP 3107 -- Function Annotations, Winter and Lownds (https://www.python.org/dev/peps/pep-3107)
+
+.. _typeshed: https://github.com/python/typeshed
 
 Copyright
 =========
