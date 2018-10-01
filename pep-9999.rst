@@ -47,7 +47,7 @@ required to interpret all standard constructs, and additionally a type checker
 can support extra constructs not described in this PEP. All deviations from
 this PEP should be documented.
 
-Directory Structure and Syntax
+Syntax and Directory Structure
 ==============================
 
 Type stubs are syntactically valid Python files with a ``.pyi`` suffix.
