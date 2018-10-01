@@ -58,6 +58,10 @@ the release of the current version. Older Python versions do not need to be
 supported, even if the implementation supports older versions or the
 type checker is run with an older version.
 
+For example, it is recommended to use PEP 526 [#pep526]_ variable
+annotations, introduced in Python 3.6, in all stubs, even for Python 2-only
+modules.
+
 Type stub files can either live next to their respective implementation
 files or in a separate directory::
 
