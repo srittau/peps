@@ -47,8 +47,8 @@ required to interpret all standard constructs, and additionally a type checker
 can support extra constructs not described in this PEP. All deviations from
 this PEP should be documented.
 
-Syntax and Directory Structure
-==============================
+Syntax
+======
 
 Type stubs are syntactically valid Python files with a ``.pyi`` suffix.
 They should be valid according to the latest Python version, but also to
@@ -67,23 +67,6 @@ variable annotations by that date, but type stubs should only
 started using them by June 23rd, 2017. Since that date the use
 of variable annotations is recommended for stubs, even if the implementation
 supports Python versions older that 3.6.
-
-Type stub files can either live next to their respective implementation
-files or in a separate directory::
-
-    pkg
-        __init__.py
-        __init__.pyi
-        mod.py
-        mod.pyi
-
-    pkg
-        __init__.py
-        mod.py
-    stubs
-        pkg
-            __init__.pyi
-            mod.pyi
 
 Distribution
 ============
