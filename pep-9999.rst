@@ -64,7 +64,7 @@ version.
 For example, Python 3.6, introducing PEP 526 [#pep526]_variable annotations,
 was released on December 23rd, 2016. Type checkers should support
 variable annotations by that date, but type stubs should only
-started using them by June 23rd, 2017. Since that date the use
+start using them on June 23rd, 2017. Since that date the use
 of variable annotations is recommended for stubs, even if the implementation
 supports Python versions older that 3.6.
 
@@ -82,7 +82,7 @@ References
 
 .. [#pep484] PEP 484 -- Type Hints, van Rossum et al. (https://www.python.org/dev/peps/pep-0484)
 .. [#pep526] PEP 526 -- Syntax for Variable Annotations, Gonzalez et al. (https://www.python.org/dev/peps/pep-0526)
-.. [#pep561] PEP 561 -- Distributing and Packaging Type Information, Smit (https://www.python.org/dev/peps/pep-0561)
+.. [#pep561] PEP 561 -- Distributing and Packaging Type Information, Smith (https://www.python.org/dev/peps/pep-0561)
 .. [#pep3107] PEP 3107 -- Function Annotations, Winter and Lownds (https://www.python.org/dev/peps/pep-3107)
 
 .. _typeshed: https://github.com/python/typeshed
