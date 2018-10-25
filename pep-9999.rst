@@ -71,7 +71,7 @@ December 27nd, 2018.
 Distribution
 ============
 
-Type stubs can be distributed separately from the implementation;
+Type stubs can be distributed with or separately from the implementation;
 see PEP 561 [#pep561]_ for more information. The typeshed_ project
 includes stubs for Python's standard library and several third-party
 packages. These are usually distributed with type checkers and do not
