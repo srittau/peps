@@ -51,9 +51,9 @@ Syntax
 ======
 
 Type stubs are syntactically valid Python files with a ``.pyi`` suffix.
-They should be valid according to the latest Python version, but also to
-the previous Python version up until six months after
-the release of the current version.
+They should be valid according to the latest Python version six months
+after release at the latest, but can start to use features from that
+release from the release date on.
 Type stubs authors are encouraged to use the latest available syntax
 features in stubs, even if the type information in the stub is targeted
 to an older Python version.
@@ -61,12 +61,12 @@ to an older Python version.
 Type checkers are expected to support the syntax of the latest released Python
 version.
 
-For example, Python 3.6, introducing PEP 526 [#pep526]_variable annotations,
-was released on December 23rd, 2016. Type checkers should support
-variable annotations by that date, but type stubs should only
-start using them on June 23rd, 2017. Since that date the use
-of variable annotations is recommended for stubs, even if the implementation
-supports Python versions older that 3.6.
+For example, Python 3.7, which enabled the new keywords `async`
+and `await` (see [#pep492]_), was released on June 27nd, 2018. Type
+checkers should support them by that date and type stubs could start
+using `async` to mark function definitions. On the other hand, type stubs
+should stop using the new keyword as an attribute or function name before
+December 27nd, 2018.
 
 Distribution
 ============
@@ -81,6 +81,7 @@ References
 ==========
 
 .. [#pep484] PEP 484 -- Type Hints, van Rossum et al. (https://www.python.org/dev/peps/pep-0484)
+.. [#pep492] PEP 492 -- Coroutines with async and await syntax, Selivanov (https://www.python.org/dev/peps/pep-0492/)
 .. [#pep526] PEP 526 -- Syntax for Variable Annotations, Gonzalez et al. (https://www.python.org/dev/peps/pep-0526)
 .. [#pep561] PEP 561 -- Distributing and Packaging Type Information, Smith (https://www.python.org/dev/peps/pep-0561)
 .. [#pep3107] PEP 3107 -- Function Annotations, Winter and Lownds (https://www.python.org/dev/peps/pep-3107)
