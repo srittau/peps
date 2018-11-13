@@ -127,7 +127,7 @@ No::
 
     class Foo:  # leave only one empty line above
         x: int
-    class MyError(Exception): ...  # leave an empty line after the class
+    class MyError(Exception): ...  # leave an empty line between the classes
 
 Module Level Dunder Names
 -------------------------
