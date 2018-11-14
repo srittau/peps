@@ -262,8 +262,25 @@ No::
         def foo(s: Text, *, i: int) -> None: ...
 
 Prefer protocols and abstract types (``Mapping``, ``Sequence``, ``Iterable``,
-etc.) for arguments and concrete types (``List``, ``Dict``, etc.) for
-return values.
+etc.) for arguments. Prefer concrete types (``List``, ``Dict``, etc.) for
+return values of concrete implementations. The return values of protocols
+and abstract base classes must be judged on a case-by-case basis.
+
+Yes::
+
+    def map_it(input: Iterable[str]) -> List[int]: ...
+    def create_map() -> Dict[str, int]: ...
+
+No::
+
+    def map_it(input: List[str]) -> List[int]: ...
+    def create_map() -> MutableMapping[str, int]: ...
+
+Maybe::
+
+    class MyProto(Protocol):
+        def foo(self) -> List[int]: ...
+        def bar(self) -> Mapping[str]: ...
 
 Avoid ``Union`` return types, since they require ``isinstance()`` checks.
 Use ``Any`` if necessary.
