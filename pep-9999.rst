@@ -247,21 +247,21 @@ Types
 Use ``float`` instead of ``Union[int, float]``. For argument types,
 use ``bytes`` instead of ``Union[bytes, memoryview, bytearray]``.
 
-Use ``Text`` in mixed Python 2 and 3 stubs when something accepts both
-``str`` and ``unicode``. Avoid using ``Text`` in stubs for Python 2 or
-3 only or in branches supporting only one Python version.
+Use ``Text`` in stubs that support Python 2 when something accepts both
+``str`` and ``unicode``. Avoid using ``Text`` in stubs or branches for
+Python 3 only.
 
 Yes::
 
     if sys.version_info < (3,):
-        def foo(s: unicode) -> None: ...
+        def foo(s: Text) -> None: ...
     else:
         def foo(s: str, *, i: int) -> None: ...
 
 No::
 
     if sys.version_info < (3,):
-        def foo(s: Text) -> None: ...
+        def foo(s: unicode) -> None: ...
     else:
         def foo(s: Text, *, i: int) -> None: ...
 
