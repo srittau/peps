@@ -129,11 +129,6 @@ No::
         x: int
     class MyError(Exception): ...  # leave an empty line between the classes
 
-Module Level Dunder Names
--------------------------
-
-Do not include ``__all__`` in type stubs.
-
 Module Level Attributes
 -----------------------
 
