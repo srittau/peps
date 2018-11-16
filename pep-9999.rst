@@ -201,11 +201,25 @@ No::
     def bar(y: str = None) -> None: ...
     def baz(z: Optional[str] = None) -> None: ...
 
-Private Classes
----------------
+Private Definitions
+-------------------
 
-If a function or method returns an instance of a private class, the
-type stub should provide a public, stub-only class::
+Type variables, type aliases, and other other definitions that should not
+be used outside the stub should be marked as private by prefixing them
+with an underscore.
+
+Yes::
+
+    _T = TypeVar("_T")
+    _DictList = Dict[str, List[Optional[int]]]
+
+No::
+
+    T = TypeVar("T")
+    DictList = Dict[str, List[Optional[int]]]
+
+If a function or method returns an instance of a class that is not
+available at runtime, the type stub should provide a public, stub-only class::
 
     # Only available during type checking
     class SomeData:
