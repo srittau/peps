@@ -145,6 +145,7 @@ No::
     x: int = 0
     y: float = ...
     z = 0  # type: int
+    a = ...  # type: int
 
 Classes
 -------
