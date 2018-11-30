@@ -219,16 +219,6 @@ No::
     T = TypeVar("T")
     DictList = Dict[str, List[Optional[int]]]
 
-If a function or method returns an instance of a class that is not
-available at runtime, the type stub should provide a public, stub-only class::
-
-    # Only available during type checking
-    class SomeData:
-        x: int
-        def foo() -> None: ...
-
-    def get_some_data() -> SomeData: ...
-
 Language Features
 -----------------
 
