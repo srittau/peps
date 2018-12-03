@@ -203,7 +203,7 @@ No::
     def baz(z: Optional[str] = None) -> None: ...
 
 Do not annotate ``self`` and ``cls`` in method definitions, except when
-referencing a type var.
+referencing a type variable.
 
 Yes::
 
