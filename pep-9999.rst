@@ -318,7 +318,8 @@ Type Checkers
   Supports Python 2 and 3.
 * pyre [#pyre]_, written in OCaml and optimized for performance.
   Supports Python 3 only.
-* pytype [#pytype]_, Supports Python 2 and 3.
+* pytype [#pytype]_, supports type checking un-annotated code.
+  Supports Python 2 and 3.
 
 Development Environments
 ------------------------
