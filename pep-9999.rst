@@ -144,6 +144,33 @@ stand in for any type::
     x: int = ""  # type is unspecified
     x: int = ...  # type is int
 
+Classes
+-------
+
+Class definition syntax follows general Python syntax, but type checkers
+are only expected to understand the following constructs in class bodies:
+
+* The ellipsis operator or pass statement are ignored and used for empty
+  class bodies.
+* Instance attributes follow the same rules as module level attributes
+  (see above).
+* Method definitions (see below) and properties.
+* Method aliases.
+* Inner class definitions.
+
+More complex statements don't need to be supported.
+
+Yes::
+
+    class Simple: ...
+
+    class Complex(Base):
+        read_write: int
+        @property
+        def read_only(self) -> int: ...
+        def do_stuff(self, y: str) -> None: ...
+        doStuff = do_stuff
+
 Functions and Methods
 ---------------------
 
