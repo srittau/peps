@@ -118,12 +118,12 @@ Decorators
 
 Type stubs may only use a fixed set of decorators:
 
-  * ``classmethod``
-  * ``staticmethod``
-  * ``property`` (including ``.setter``)
-  * ``abc.abstractmethod``
-  * ``typing.overload``
-  * ``asyncio.coroutines.coroutine``
+* ``classmethod``
+* ``staticmethod``
+* ``property`` (including ``.setter``)
+* ``abc.abstractmethod``
+* ``typing.overload``
+* ``asyncio.coroutines.coroutine``
 
 The behavior of other decorators should instead be incorporated into the types.
 For example, for the following function::
