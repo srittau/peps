@@ -116,13 +116,13 @@ generic class definitions.
 Decorators
 ----------
 
-Type stubs may only use a fixed set of decorators:
+Type stubs may only use decorators defined in the ``typing`` module, plus a
+fixed set of additional ones:
 
 * ``classmethod``
 * ``staticmethod``
 * ``property`` (including ``.setter``)
 * ``abc.abstractmethod``
-* ``typing.overload``
 * ``asyncio.coroutines.coroutine``
 
 The behavior of other decorators should instead be incorporated into the types.
