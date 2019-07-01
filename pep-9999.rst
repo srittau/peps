@@ -92,7 +92,7 @@ Aliases
 
 Type checkers should accept module-level and class-level aliases, e.g.::
 
-  IntList = List[int]
+  _IntList = List[int]
 
   class C:
     def f(self) -> int: ...
@@ -108,7 +108,7 @@ must be substituted when the alias is used::
   # either concrete types or other type variables can be substituted
   def f(x: _MyMap[str, _V]) -> _V: ...
   # explicitly substitute in Any rather than using a bare alias
-  def f(x: _MyMap[Any, Any]) -> Any: ...
+  def g(x: _MyMap[Any, Any]) -> Any: ...
 
 Otherwise, type variables in aliases follow the same rules as type variables in
 generic class definitions.
