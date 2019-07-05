@@ -87,6 +87,68 @@ Supported Constructs
 This sections lists constructs that compliant type checkers are expected
 to accept. Type stub authors can safely use these constructs.
 
+Aliases
+-------
+
+Type checkers should accept module-level and class-level aliases, e.g.::
+
+  _IntList = List[int]
+
+  class C:
+    def f(self) -> int: ...
+    g = f
+
+An alias to a type may contain type variables, in which case all type variables
+must be substituted when the alias is used::
+
+  _K = TypeVar("_K")
+  _V = TypeVar("_V")
+  _MyMap = Dict[str, Dict[_K, _V]]
+
+  # either concrete types or other type variables can be substituted
+  def f(x: _MyMap[str, _V]) -> _V: ...
+  # explicitly substitute in Any rather than using a bare alias
+  def g(x: _MyMap[Any, Any]) -> Any: ...
+
+Otherwise, type variables in aliases follow the same rules as type variables in
+generic class definitions.
+
+Decorators
+----------
+
+Type stubs may only use decorators defined in the ``typing`` module, plus a
+fixed set of additional ones:
+
+* ``classmethod``
+* ``staticmethod``
+* ``property`` (including ``.setter``)
+* ``abc.abstractmethod``
+* ``asyncio.coroutines.coroutine``
+
+The behavior of other decorators should instead be incorporated into the types.
+For example, for the following function::
+
+  import contextlib
+  @contextlib.contextmanager
+  def f():
+    yield 42
+
+the stub definition should be::
+
+  from typing import ContextManager
+  def f() -> ContextManager[int]: ...
+
+Structured comments
+-------------------
+
+Two kinds of structured comments are accepted:
+
+* A ``# type: X`` comment at the end of a line that defines a variable,
+  declaring that the variable has type ``X``. However, PEP 526-style [#pep526]_
+  variable annotations are preferred over type comments.
+* A ``# type: ignore`` comment at the end of any line, which suppresses all type
+  errors in that line.
+
 Version and Platform Checks
 ---------------------------
 
@@ -215,6 +277,67 @@ annotated function ``bar()``::
         y: str
 
     def bar(x: str, y, *, z=...): ...
+
+Attribute Access
+----------------
+
+Python has several methods for customizing attribute access: ``__getattr__``,
+``__getattribute__``, ``__setattr__``, and ``__delattr__``. Of these,
+``__getattr__`` and ``__setattr___`` should sometimes be included in stubs.
+
+In addition to marking incomplete definitions, ``__getattr__`` should be
+included when a class or module allows any name to be accessed. For example, for
+the following class::
+
+  class Foo:
+      def __getattribute__(self, name):
+          return self.__dict__.setdefault(name)
+
+an appropriate stub definition is::
+
+  from typing import Any, Optional
+  class Foo:
+      def __getattr__(self, name: str) -> Optional[Any]: ...
+
+Note that only ``__getattr__``, not ``__getattribute__``, is guaranteed to be
+supported in stubs.
+
+On the other hand, ``__getattr__`` should be omitted even if the source code
+includes it, if only limited names are allowed. For example, for this class::
+
+  class ComplexNumber:
+      def __init__(self, n):
+          self._n = n
+      def __getattr__(self, name):
+          if name in ("real", "imag"):
+              return getattr(self._n, name)
+          raise AttributeError(name)
+
+the stub should list attributes individually::
+
+  class ComplexNumber:
+      real: float
+      imag: float
+      def __init__(self, n: complex) -> None: ...
+
+``__setattr___`` should be included when a class allows any name to be set and
+restricts the type, e.g.::
+
+  class IntHolder:
+      def __setattr__(self, name, value):
+          if isinstance(value, int):
+              return super().__setattr__(name, value)
+          raise ValueError(value)
+
+A good stub definition::
+
+  class IntHolder:
+      def __setattr__(self, name: str, value: int) -> None: ...
+
+``__delattr__`` should not be included in stubs.
+
+Finally, even in the presence of ``__getattr__`` and ``__setattr__``, it is
+still recommended to separately define known attributes.
 
 Documentation or Implementation
 -------------------------------
