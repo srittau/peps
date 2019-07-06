@@ -138,6 +138,19 @@ the stub definition should be::
   from typing import ContextManager
   def f() -> ContextManager[int]: ...
 
+Positional-only arguments
+-------------------------
+
+Type stubs may define positional-only arguments as per PEP 570 [#pep570]_.
+Positional-only arguments in type stubs behave as described in the PEP.
+
+For example::
+
+    def pos_only_args(x: float, y: float, /) -> float: ...
+
+A type checker should report an error for a call like ``pos_only_args(x=1,
+y=2)``.
+
 Structured comments
 -------------------
 
@@ -608,6 +621,7 @@ PEPs
 .. [#pep492] PEP 492 -- Coroutines with async and await syntax, Selivanov (https://www.python.org/dev/peps/pep-0492/)
 .. [#pep526] PEP 526 -- Syntax for Variable Annotations, Gonzalez et al. (https://www.python.org/dev/peps/pep-0526)
 .. [#pep561] PEP 561 -- Distributing and Packaging Type Information, Smith (https://www.python.org/dev/peps/pep-0561)
+.. [#pep570] PEP 570 -- Python Positional-Only Parameters, Hastings et al. (https://www.python.org/dev/peps/pep-0570)
 .. [#pep3107] PEP 3107 -- Function Annotations, Winter and Lownds (https://www.python.org/dev/peps/pep-3107)
 
 Type Checkers
