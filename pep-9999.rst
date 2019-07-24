@@ -159,20 +159,13 @@ explain in the Syntax_ section above.
 
 Version checks are if-statements that use ``sys.version_info`` to determine the
 current Python version. Version checks should only check against the ``major`` and
-``minor`` parts of ``sys.version_info``.
-
-Stub files support various forms of version checks::
+``minor`` parts of ``sys.version_info``. Type checkers are only required to
+support the tuple-based version check syntax::
 
     if sys.version_info >= (3,):
         # Python 3-specific type hints. This tuple-based syntax is recommended.
     else:
         # Python 2-specific type hints.
-
-    if sys.version_info.major >= 3:
-        # Same as previous check.
-
-    if sys.version_info[0] >= 3:
-        # This is also the same.
 
     if sys.version_info >= (3, 5):
         # Specific minor version features can be easily checked with tuples.
@@ -181,14 +174,35 @@ Stub files support various forms of version checks::
         # This is only necessary when a feature has no Python 3 equivalent.
         # "<= (2, 7)" does not work because e.g. (2, 7, 1) > (2, 7).
 
+Type stubs should avoid checkinging against ``sys.version_info.major``
+directly.
+
+No::
+
+    if sys.version_info.major >= 3:
+        # Semantically the same as the first tuple check.
+
+    if sys.version_info[0] >= 3:
+        # This is also the same.
+
 Some type stubs also may need to specify type hints for different platforms.
 Platform checks must be equality comparisons between ``sys.platform`` and the name
 of a platform as a string literal::
+
+Yes::
 
     if sys.platform == 'win32':
         # Windows-specific type hints.
     else:
         # Posix-specific type hints.
+
+No::
+
+    if sys.platform.startswith('linux'):
+        # Not necessary since Python 3.3.
+
+    if sys.platform in ['linux', 'cygwin', 'darwin']:
+        # Only '==' should be used in platform checks.
 
 Type Stub Content
 =================
@@ -601,14 +615,6 @@ Yes::
         # Windows-specific type hints.
     else:
         # Posix-specific type hints.
-
-No::
-
-    if sys.platform.startswith('linux'):
-        # Not necessary since Python 3.3.
-
-    if sys.platform in ['linux', 'cygwin', 'darwin']:
-        # Only '==' should be used in platform checks.
 
 Types
 -----
