@@ -187,7 +187,7 @@ No::
 
 Some type stubs also may need to specify type hints for different platforms.
 Platform checks must be equality comparisons between ``sys.platform`` and the name
-of a platform as a string literal::
+of a platform as a string literal:
 
 Yes::
 
