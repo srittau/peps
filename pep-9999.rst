@@ -154,8 +154,8 @@ Version and Platform Checks
 
 Type stubs for libraries that support multiple Python versions can use version
 checks to supply version-specific type hints. Type stubs for different Python
-versions should still conform to the most recent Python version's syntax, as
-explain in the Syntax_ section above.
+versions should still conform to the most recent supported Python version's
+syntax, as explain in the Syntax_ section above.
 
 Version checks are if-statements that use ``sys.version_info`` to determine the
 current Python version. Version checks should only check against the ``major`` and
