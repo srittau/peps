@@ -345,10 +345,10 @@ this case, the class should be marked with ``typing.type_check_only``::
 Structural Types
 ----------------
 
-As seen in the above example with ``Readable``, a common use of stub-only
-objects is to model types that are best described by their structure. These
-objects are called protocols [#pep544]_, and it is encouraged to use them freely
-to describe structural types.
+As seen in the example with ``Readable`` in the previous section, a common use
+of stub-only objects is to model types that are best described by their
+structure. These objects are called protocols [#pep544]_, and it is encouraged
+to use them freely to describe simple structural types.
 
 Incomplete Stubs
 ----------------
