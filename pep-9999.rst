@@ -559,6 +559,18 @@ No::
         ...
     class AnotherError(Exception): pass
 
+Use the type annotation syntax for instance attributes. Class attributes
+should be annotated with ``typing.ClassVar``.
+
+Yes::
+
+    from typing import ClassVar
+    class Something:
+        stuff: float
+        things: str
+        universal_thing: ClassVar[str]
+        
+
 Functions and Methods
 ---------------------
 
@@ -716,6 +728,32 @@ Maybe::
 
 Avoid ``Union`` return types, since they require ``isinstance()`` checks.
 Use ``Any`` if necessary.
+
+NamedTuple and TypedDict
+------------------------
+
+Use the class-based syntax for ``typing.NamedTuple`` and
+``typing.TypedDict``, following the Classes section of this style guide.
+
+Yes::
+
+    from typing import NamedTuple, TypedDict
+    class Point(NamedTuple):
+        x: float
+        y: float
+        def distance(self, other: Point) -> float: ...
+
+    class Thing(TypedDict):
+        stuff: str
+        index: int
+
+No::
+
+  from typing import NamedTuple, TypedDict
+  Point = NamedTuple("Point", [('x', float), ('y', float)])
+  Thing = TypedDict("Thing", {'stuff': str, 'index': int})
+
+
 
 Existing Tools
 ==============
