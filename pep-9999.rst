@@ -569,7 +569,6 @@ Yes::
         stuff: float
         things: str
         universal_thing: ClassVar[str]
-        
 
 Functions and Methods
 ---------------------
@@ -752,8 +751,6 @@ No::
   from typing import NamedTuple, TypedDict
   Point = NamedTuple("Point", [('x', float), ('y', float)])
   Thing = TypedDict("Thing", {'stuff': str, 'index': int})
-
-
 
 Existing Tools
 ==============
