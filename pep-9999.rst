@@ -274,7 +274,7 @@ the stub definition should be::
   from typing import ContextManager
   def f() -> ContextManager[int]: ...
 
-Structured comments
+Structured Comments
 -------------------
 
 Two kinds of structured comments are accepted:
@@ -284,6 +284,21 @@ Two kinds of structured comments are accepted:
   variable annotations are preferred over type comments.
 * A ``# type: ignore`` comment at the end of any line, which suppresses all type
   errors in that line.
+
+``__all__``
+-----------
+
+Stubs support customizing star import semantics by defining a module-level
+variable called ``__all__``. ``__all__`` should be a list of strings. By
+default, ``from foo import *`` imports all names in ``foo`` that do not begin
+with an underscore. When ``__all__`` is defined, only those names specified in
+``__all__`` are imported::
+
+  __all__ = ['public_attr', '_private_looking_public_attr']
+
+  public_attr: int
+  _private_looking_public_attr: int
+  private_attr: int
 
 Type Stub Content
 =================
