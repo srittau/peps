@@ -289,10 +289,10 @@ Two kinds of structured comments are accepted:
 -----------
 
 Stubs support customizing star import semantics by defining a module-level
-variable called ``__all__``. ``__all__`` should be a list of strings. By
-default, ``from foo import *`` imports all names in ``foo`` that do not begin
-with an underscore. When ``__all__`` is defined, only those names specified in
-``__all__`` are imported::
+variable called ``__all__``. ``__all__`` should be a list, set, or tuple of
+strings. By default, ``from foo import *`` imports all names in ``foo`` that do
+not begin with an underscore. When ``__all__`` is defined, only those names
+specified in ``__all__`` are imported::
 
   __all__ = ['public_attr', '_private_looking_public_attr']
 
