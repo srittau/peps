@@ -560,7 +560,7 @@ No::
     class AnotherError(Exception): pass
 
 Use the type annotation syntax for instance attributes. Class attributes
-should be annotated with ``typing.ClassVar``.
+must be annotated with ``typing.ClassVar``.
 
 Yes::
 
@@ -740,7 +740,6 @@ Yes::
     class Point(NamedTuple):
         x: float
         y: float
-        def distance(self, other: Point) -> float: ...
 
     class Thing(TypedDict):
         stuff: str
