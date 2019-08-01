@@ -732,6 +732,22 @@ Maybe::
 Avoid ``Union`` return types, since they require ``isinstance()`` checks.
 Use ``Any`` if necessary.
 
+``__all___``
+------------
+
+Only define ``__all__`` when necessary to control import behavior, and use a
+list literal.
+
+Yes::
+
+  __all__ = ["foo", "bar"]
+
+No::
+
+  __all__ = ("foo", "bar")
+
+  __all__ = {"foo", "bar"}
+
 Existing Tools
 ==============
 
