@@ -560,7 +560,7 @@ No::
     class AnotherError(Exception): pass
 
 Use the type annotation syntax for instance attributes. Class attributes
-must be annotated with ``typing.ClassVar``.
+should be annotated with ``typing.ClassVar``.
 
 Yes::
 
