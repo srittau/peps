@@ -274,7 +274,7 @@ the stub definition should be::
   from typing import ContextManager
   def f() -> ContextManager[int]: ...
 
-Structured comments
+Structured Comments
 -------------------
 
 Two kinds of structured comments are accepted:
@@ -284,6 +284,76 @@ Two kinds of structured comments are accepted:
   variable annotations are preferred over type comments.
 * A ``# type: ignore`` comment at the end of any line, which suppresses all type
   errors in that line.
+
+Version and Platform Checks
+---------------------------
+
+Type stubs for libraries that support multiple Python versions can use version
+checks to supply version-specific type hints. Type stubs for different Python
+versions should still conform to the most recent supported Python version's
+syntax, as explain in the Syntax_ section above.
+
+Version checks are if-statements that use ``sys.version_info`` to determine the
+current Python version. Version checks should only check against the ``major`` and
+``minor`` parts of ``sys.version_info``. Type checkers are only required to
+support the tuple-based version check syntax::
+
+    if sys.version_info >= (3,):
+        # Python 3-specific type hints. This tuple-based syntax is recommended.
+    else:
+        # Python 2-specific type hints.
+
+    if sys.version_info >= (3, 5):
+        # Specific minor version features can be easily checked with tuples.
+
+    if sys.version_info < (3,):
+        # This is only necessary when a feature has no Python 3 equivalent.
+        # "<= (2, 7)" does not work because e.g. (2, 7, 1) > (2, 7).
+
+Type stubs should avoid checkinging against ``sys.version_info.major``
+directly.
+
+No::
+
+    if sys.version_info.major >= 3:
+        # Semantically the same as the first tuple check.
+
+    if sys.version_info[0] >= 3:
+        # This is also the same.
+
+Some type stubs also may need to specify type hints for different platforms.
+Platform checks must be equality comparisons between ``sys.platform`` and the name
+of a platform as a string literal:
+
+Yes::
+
+    if sys.platform == 'win32':
+        # Windows-specific type hints.
+    else:
+        # Posix-specific type hints.
+
+No::
+
+    if sys.platform.startswith('linux'):
+        # Not necessary since Python 3.3.
+
+    if sys.platform in ['linux', 'cygwin', 'darwin']:
+        # Only '==' should be used in platform checks.
+
+``__all__``
+-----------
+
+Stubs support customizing star import semantics by defining a module-level
+variable called ``__all__``. ``__all__`` should be a list, set, or tuple literal
+of strings. By default, ``from foo import *`` imports all names in ``foo`` that
+do not begin with an underscore. When ``__all__`` is defined, only those names
+specified in ``__all__`` are imported::
+
+  __all__ = ['public_attr', '_private_looking_public_attr']
+
+  public_attr: int
+  _private_looking_public_attr: int
+  private_attr: int
 
 Type Stub Content
 =================
@@ -669,6 +739,53 @@ No::
         forward_reference: 'OtherClass'
     class OtherClass: ...
 
+Version and Platform Checks
+---------------------------
+
+Use the tuple-based syntax for version checks. This is easier to read and write
+than the alternatives. Version checks should only check against the ``major``
+and ``minor`` parts of ``sys.version_info``.
+
+Yes::
+
+    if sys.version_info >= (3,):
+        # Python 3-specific type hints.
+    else:
+        # Python 2-specific type hints.
+
+    if sys.version_info >= (3, 5):
+        # Specific minor version features can be easily checked with tuples.
+
+    if sys.version_info < (3,):
+        # This is only necessary when a feature has no Python 3 equivalent.
+        # "<= (2, 7)" does not work because e.g. (2, 7, 1) > (2, 7).
+
+No::
+
+    if sys.version_info >= (3, 5, 1):
+        # Version checks should only check major and minor version numbers.
+
+    if sys.version_info[0] >= 3 and sys.version_info[1] >= 5:
+        # Just use a single tuple comparison: "sys.version_info >= (3, 5)"
+
+    if sys.version_info.major != 2:
+        # This is less clear than `sys.version_info >= (3,)`.
+
+Version checks should be kept as simple as possible, though more complex checks
+are occasionally necessary. For example, type hints for a feature that was added
+in Python 3.6 and backported to 2.7 may be guarded by ``if sys.version_info <
+(3,) or sys.version_info >= (3, 6)``.
+
+For platform checks, use simple equality comparisons between ``sys.platform``
+and the name of the platform as a string literal.
+
+Yes::
+
+    if sys.platform == 'win32':
+        # Windows-specific type hints.
+    else:
+        # Posix-specific type hints.
+
 Types
 -----
 
@@ -747,9 +864,25 @@ Yes::
 
 No::
 
-  from typing import NamedTuple, TypedDict
-  Point = NamedTuple("Point", [('x', float), ('y', float)])
-  Thing = TypedDict("Thing", {'stuff': str, 'index': int})
+    from typing import NamedTuple, TypedDict
+    Point = NamedTuple("Point", [('x', float), ('y', float)])
+    Thing = TypedDict("Thing", {'stuff': str, 'index': int})
+
+``__all___``
+------------
+
+Only define ``__all__`` when necessary to control import behavior, and use a
+list literal.
+
+Yes::
+
+  __all__ = ["foo", "bar"]
+
+No::
+
+  __all__ = ("foo", "bar")
+
+  __all__ = {"foo", "bar"}
 
 Existing Tools
 ==============
