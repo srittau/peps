@@ -357,7 +357,10 @@ specified in ``__all__`` are imported::
   public_attr: int
   _private_looking_public_attr: int
   private_attr: int
-  
+
+A type stub should contain an ``__all__`` variable if and only if the
+implementation has one too, and it should be identical to the implementation.
+
 Enums
 -----
 
