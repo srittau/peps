@@ -967,6 +967,8 @@ Development Environments
 
 * PyCharm [#pycharm]_, an IDE that supports type stubs both for type
   checking and code completion.
+* Visual Studio Code [#vscode]_, a code editor that supports type
+  checking using mypy, Pyright, or the Pylance [#pylance]_ extension.
 
 Linters and Formatters
 ----------------------
@@ -993,14 +995,16 @@ PEPs
 .. [#pep612] PEP 612 -- Parameter Specification Variables, Mendoza (https://www.python.org/dev/peps/pep-0612)
 .. [#pep3107] PEP 3107 -- Function Annotations, Winter and Lownds (https://www.python.org/dev/peps/pep-3107)
 
-Type Checkers
--------------
+Type Checkers and IDEs
+----------------------
 
 .. [#mypy] mypy -- Optional Static Typing for Python (http://www.mypy-lang.org/)
 .. [#pycharm] PyCharm -- The Python IDE for Professional Developers (https://www.jetbrains.com/pycharm/)
+.. [#pylance] Pylance -- Fast, feature-rich language support for Python (https://github.com/microsoft/pylance-release)
 .. [#pyre] Pyre -- A performant type-checker for Python 3 (https://pyre-check.org/)
 .. [#pyright] Pyright -- Static type checker for Python (https://github.com/microsoft/pyright)
 .. [#pytype] pytype -- A static analyzer for Python code (https://github.com/google/pytype)
+.. [#vscode] Visual Studio Code -- Code Editing. Redefined (https://code.visualstudio.com/)
 
 Other Resources
 ---------------
