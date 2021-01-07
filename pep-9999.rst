@@ -692,12 +692,12 @@ Do not use an assignment for module-level attributes.
 
 Yes::
 
-    CONST: str
+    CONST: Literal["const"]
     x: int
 
 No::
 
-    CONST = ""
+    CONST = "const"
     x: int = 0
     y: float = ...
     z = 0  # type: int
