@@ -588,7 +588,8 @@ still recommended to separately define known attributes.
 Constants
 ---------
 
-Type constants using ``Literal``, instead of using a generic type.
+When the value of a constant is important, annotate it using ``Literal``
+instead of its type.
 
 Yes::
 
