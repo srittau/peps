@@ -323,8 +323,7 @@ support the tuple-based version check syntax::
         # "<= (2, 7)" does not work because e.g. (2, 7, 1) > (2, 7).
 
 Type stubs should avoid checking against ``sys.version_info.major``
-directly and should not use comparison operators other than ``<``, ``<=``,
-``>``, and ``>=``.
+directly and should not use comparison operators other than ``<`` and ``>=``.
 
 No::
 
