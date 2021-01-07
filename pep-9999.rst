@@ -232,7 +232,7 @@ compatibility with all type checkers::
     def foo(): ...  # compatible
     def bar(): pass  # behaviour undefined
 
-All variants of overloaded function and methods must have an ``@overload``
+All variants of overloaded functions and methods must have an ``@overload``
 decorator::
 
     @overload
