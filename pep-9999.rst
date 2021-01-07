@@ -93,8 +93,8 @@ require separate installation.
 Supported Constructs
 ====================
 
-This sections lists constructs that compliant type checkers are expected
-to accept. Type stub authors can safely use these constructs. If a
+This sections lists constructs that type checkers will accept in type stubs.
+Type stub authors can safely use these constructs. If a
 construct is marked as "unspecified", type checkers may handle it
 as they best see fit or report an error. Linters should usually
 flag those constructs. Type stub authors should avoid using them to
