@@ -134,7 +134,7 @@ Then ``foo`` will export ``bar`` when one of the following constructs is used in
     from .bar import Bar
 
 Stubs support customizing star import semantics by defining a module-level
-variable called ``__all__``. In stubs, this must be a list literal of strings.
+variable called ``__all__``. In stubs, this must be a string list literal.
 Other types are not supported. Neither is the dynamic creation of this
 variable (for example by concatenation).
 
