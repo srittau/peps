@@ -968,7 +968,7 @@ Development Environments
 * PyCharm [#pycharm]_, an IDE that supports type stubs both for type
   checking and code completion.
 * Visual Studio Code [#vscode]_, a code editor that supports type
-  checking using mypy, Pyright, or the Pylance [#pylance]_ extension.
+  checking using mypy, pyright, or the Pylance [#pylance]_ extension.
 
 Linters and Formatters
 ----------------------
@@ -1000,7 +1000,7 @@ Type Checkers
 
 .. [#mypy] mypy -- Optional Static Typing for Python (http://www.mypy-lang.org/)
 .. [#pyre] Pyre -- A performant type-checker for Python 3 (https://pyre-check.org/)
-.. [#pyright] Pyright -- Static type checker for Python (https://github.com/microsoft/pyright)
+.. [#pyright] pyright -- Static type checker for Python (https://github.com/microsoft/pyright)
 .. [#pytype] pytype -- A static analyzer for Python code (https://github.com/google/pytype)
 
 IDEs with Typing Support
