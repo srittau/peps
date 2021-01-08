@@ -1007,7 +1007,7 @@ IDEs with Typing Support
 ------------------------
 
 .. [#pycharm] PyCharm -- The Python IDE for Professional Developers (https://www.jetbrains.com/pycharm/)
-.. [#pylance] Pylance -- Fast, feature-rich language support for Python (language server extension for Visual Studio Code) (https://github.com/microsoft/pylance-release)
+.. [#pylance] Pylance -- Fast, feature-rich language support for Python (https://github.com/microsoft/pylance-release)
 .. [#vscode] Visual Studio Code -- Code Editing. Redefined (https://code.visualstudio.com/)
 
 Other Resources
