@@ -995,15 +995,19 @@ PEPs
 .. [#pep612] PEP 612 -- Parameter Specification Variables, Mendoza (https://www.python.org/dev/peps/pep-0612)
 .. [#pep3107] PEP 3107 -- Function Annotations, Winter and Lownds (https://www.python.org/dev/peps/pep-3107)
 
-Type Checkers and IDEs
-----------------------
+Type Checkers
+-------------
 
 .. [#mypy] mypy -- Optional Static Typing for Python (http://www.mypy-lang.org/)
-.. [#pycharm] PyCharm -- The Python IDE for Professional Developers (https://www.jetbrains.com/pycharm/)
-.. [#pylance] Pylance -- Fast, feature-rich language support for Python (https://github.com/microsoft/pylance-release)
 .. [#pyre] Pyre -- A performant type-checker for Python 3 (https://pyre-check.org/)
 .. [#pyright] Pyright -- Static type checker for Python (https://github.com/microsoft/pyright)
 .. [#pytype] pytype -- A static analyzer for Python code (https://github.com/google/pytype)
+
+IDEs with Typing Support
+------------------------
+
+.. [#pycharm] PyCharm -- The Python IDE for Professional Developers (https://www.jetbrains.com/pycharm/)
+.. [#pylance] Pylance -- Fast, feature-rich language support for Python (language server extension for Visual Studio Code) (https://github.com/microsoft/pylance-release)
 .. [#vscode] Visual Studio Code -- Code Editing. Redefined (https://code.visualstudio.com/)
 
 Other Resources
