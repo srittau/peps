@@ -1014,8 +1014,8 @@ Other Resources
 ---------------
 
 .. [#black] black -- The uncompromising code formatter (https://black.readthedocs.io/)
-.. [#flake8] Flake8: Your Tool For Style Guide Enforcement (http://flake8.pycqa.org/)
-.. [#flake8-pyi] flake8-pyi (https://github.com/ambv/flake8-pyi)
+.. [#flake8] Flake8 -- Your Tool For Style Guide Enforcement (http://flake8.pycqa.org/)
+.. [#flake8-pyi] flake8-pyi -- A plugin for Flake8 that provides specializations for type hinting stub files (https://github.com/ambv/flake8-pyi)
 .. [#typeshed] typeshed -- Collection of library stubs for Python, with static types (https://github.com/python/typeshed)
 .. [#ast] ast -- Abstract Syntax Trees, Python standard library module (https://docs.python.org/3/library/ast.html)
 .. [#typed_ast] typed_ast -- Fork of CPython's ast module (https://pypi.org/project/typed-ast/)
