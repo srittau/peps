@@ -902,7 +902,7 @@ No::
 Types
 -----
 
-Generally, use ``Any`` when a type can not be expressed appropriately
+Generally, use ``Any`` when a type cannot be expressed appropriately
 with the current type system or using the correct type is unergonomic.
 
 Use ``float`` instead of ``Union[int, float]``.
