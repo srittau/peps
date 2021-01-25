@@ -265,9 +265,6 @@ If an argument has a default value, it must match the implementation
 and the type of the argument (if specified) must match the default value.
 Alternatively, ``...`` can be used in place of any default value::
 
-    # a has type Any
-    # b's default argument is invalid
-    # c and d have type int
     # The following arguments all have type Any.
     def unannotated(a, b=42, c=...): ...
     # The following arguments all have type int.
