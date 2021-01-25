@@ -257,7 +257,7 @@ PEP 570 [#pep570]_ style positional-only parameters are currently not
 supported.
 
 If an argument or return type is unannotated, per PEP 484 [#pep484]_ its
-type is assumed to be ``Any``. Note that it is preferred to leave unknown
+type is assumed to be ``Any``. It is preferred to leave unknown
 types unannotated rather than explicitly marking them as ``Any``, as some
 type checkers can optionally warn about unannotated arguments.
 
